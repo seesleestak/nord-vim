@@ -14,7 +14,7 @@ if version > 580
   endif
 endif
 
-let g:colors_name = "nord"
+let g:colors_name = "nord-minimal"
 let s:nord_vim_version="0.12.0"
 set background=dark
 
