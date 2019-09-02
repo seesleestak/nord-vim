@@ -4,6 +4,8 @@
 " Project: Nord Vim
 " Repository: https://github.com/arcticicestudio/nord-vim
 " License: MIT
+" ----------------------------------------------
+" NOTE: Fork of nord with some modifications
 
 if version > 580
   hi clear
@@ -16,7 +18,8 @@ let g:colors_name = "nord"
 let s:nord_vim_version="0.12.0"
 set background=dark
 
-let s:nord0_gui = "#2E3440"
+" let s:nord0_gui = "#2E3440"
+let s:nord0_gui = "#252A33"
 let s:nord1_gui = "#3B4252"
 let s:nord2_gui = "#434C5E"
 let s:nord3_gui = "#4C566A"
@@ -72,39 +75,9 @@ let s:nord3_gui_brightened = [
   \ "#7b88a1",
 \ ]
 
-if !exists("g:nord_bold")
-  let g:nord_bold = 1
-endif
-
 let s:bold = "bold,"
-if g:nord_bold == 0
-  let s:bold = ""
-endif
-
-if !exists("g:nord_italic")
-  if has("gui_running") || $TERM_ITALICS == "true"
-    let g:nord_italic = 1
-  else
-    let g:nord_italic = 0
-  endif
-endif
-
 let s:italic = "italic,"
-if g:nord_italic == 0
-  let s:italic = ""
-endif
-
 let s:underline = "underline,"
-if ! get(g:, "nord_underline", 1)
-  let s:underline = "NONE,"
-endif
-
-let s:italicize_comments = ""
-if exists("g:nord_italic_comments")
-  if g:nord_italic_comments == 1
-    let s:italicize_comments = s:italic
-  endif
-endif
 
 if !exists('g:nord_uniform_status_lines')
   let g:nord_uniform_status_lines = 0
@@ -115,13 +88,6 @@ function! s:logWarning(msg)
   echomsg 'nord: warning: ' . a:msg
   echohl None
 endfunction
-
-if exists("g:nord_comment_brightness")
-  call s:logWarning('Variable g:nord_comment_brightness has been deprecated and will be removed in version 1.0.0!' .
-                   \' The comment color brightness has been increased by 10% by default.' .
-                   \' Please see https://github.com/arcticicestudio/nord-vim/issues/145 for more details.')
-  let g:nord_comment_brightness = 10
-endif
 
 if !exists("g:nord_uniform_diff_background")
   let g:nord_uniform_diff_background = 0
@@ -273,26 +239,26 @@ endif
 "+----------------------+
 call s:hi("Boolean", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Character", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("Comment", s:nord3_gui_bright, "", s:nord3_term, "", s:italicize_comments, "")
-call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Comment", s:nord3_gui_bright, "", s:nord3_term, "", s:italic, "")
+call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
 call s:hi("Constant", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("Define", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Delimiter", s:nord6_gui, "", s:nord6_term, "", "", "")
-call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
 call s:hi("Float", s:nord15_gui, "", s:nord15_term, "", "", "")
-call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", "", "")
+call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", s:bold, "")
 call s:hi("Identifier", s:nord4_gui, "", "NONE", "", "NONE", "")
-call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", "", "")
-call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", "", "")
-call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
 call s:hi("Number", s:nord15_gui, "", s:nord15_term, "", "", "")
-call s:hi("Operator", s:nord9_gui, "", s:nord9_term, "", "NONE", "")
-call s:hi("PreProc", s:nord9_gui, "", s:nord9_term, "", "NONE", "")
-call s:hi("Repeat", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Operator", s:nord4_gui, "", s:nord9_term, "", "NONE", "")
+call s:hi("PreProc", s:nord4_gui, "", s:nord9_term, "", "NONE", "")
+call s:hi("Repeat", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
 call s:hi("Special", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("SpecialChar", s:nord13_gui, "", s:nord13_term, "", "", "")
-call s:hi("SpecialComment", s:nord8_gui, "", s:nord8_term, "", s:italicize_comments, "")
-call s:hi("Statement", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("SpecialComment", s:nord8_gui, "", s:nord8_term, "", s:italic, "")
+call s:hi("Statement", s:nord4_gui, "", s:nord9_term, "", s:bold, "")
 call s:hi("StorageClass", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("String", s:nord14_gui, "", s:nord14_term, "", "", "")
 call s:hi("Structure", s:nord9_gui, "", s:nord9_term, "", "", "")
@@ -533,16 +499,14 @@ hi! link vimFunc Function
 hi! link vimFunction Function
 hi! link vimUserFunc Function
 
-call s:hi("xmlAttrib", s:nord7_gui, "", s:nord7_term, "", "", "")
-call s:hi("xmlCdataStart", s:nord3_gui_bright, "", s:nord3_term, "", s:bold, "")
-call s:hi("xmlNamespace", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link xmlAttribPunct Delimiter
+" call s:hi("xmlAttrib", s:nord7_gui, "", s:nord7_term, "", "", "")
+" call s:hi("xmlNamespace", s:nord7_gui, "", s:nord7_term, "", "", "")
+" call s:hi("xmlCdataStart", s:nord3_gui_bright, "", s:nord3_term, "", s:bold, "")
+call s:hi("xmlTag", s:nord9_gui, "", s:nord9_term, "", "", "")
 hi! link xmlCdata Comment
-hi! link xmlCdataCdata xmlCdataStart
-hi! link xmlCdataEnd xmlCdataStart
-hi! link xmlEndTag xmlTagName
-hi! link xmlProcessingDelim Keyword
-hi! link xmlTagName Keyword
+hi link xmlTagName xmlTag
+hi link xmlEndTag xmlTag
+hi link xmlAttrib xmlTag
 
 call s:hi("yamlBlockMappingKey", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link yamlBool Keyword
@@ -559,13 +523,6 @@ call s:hi("ALEErrorSign" , s:nord11_gui, "", s:nord11_term, "", "", "")
 call s:hi("ALEWarning" , s:nord13_gui, "", s:nord13_term, "", "undercurl", "")
 call s:hi("ALEError" , s:nord11_gui, "", s:nord11_term, "", "undercurl", "")
 
-" Coc
-" > neoclide/coc
-call s:hi("CocWarningSign", s:nord13_gui, "", s:nord13_term, "", "", "")
-call s:hi("CocErrorSign" , s:nord11_gui, "", s:nord11_term, "", "", "")
-call s:hi("CocInfoSign" , s:nord8_gui, "", s:nord8_term, "", "", "")
-call s:hi("CocHintSign" , s:nord10_gui, "", s:nord10_term, "", "", "")
-
 " GitGutter
 " > airblade/vim-gitgutter
 call s:hi("GitGutterAdd", s:nord14_gui, "", s:nord14_term, "", "", "")
@@ -573,41 +530,15 @@ call s:hi("GitGutterChange", s:nord13_gui, "", s:nord13_term, "", "", "")
 call s:hi("GitGutterChangeDelete", s:nord11_gui, "", s:nord11_term, "", "", "")
 call s:hi("GitGutterDelete", s:nord11_gui, "", s:nord11_term, "", "", "")
 
-" Signify
-" > mhinz/vim-signify
-call s:hi("SignifySignAdd", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("SignifySignChange", s:nord13_gui, "", s:nord13_term, "", "", "")
-call s:hi("SignifySignChangeDelete", s:nord11_gui, "", s:nord11_term, "", "", "")
-call s:hi("SignifySignDelete", s:nord11_gui, "", s:nord11_term, "", "", "")
-
 " fugitive.vim
 " > tpope/vim-fugitive
 call s:hi("gitcommitDiscardedFile", s:nord11_gui, "", s:nord11_term, "", "", "")
 call s:hi("gitcommitUntrackedFile", s:nord11_gui, "", s:nord11_term, "", "", "")
 call s:hi("gitcommitSelectedFile", s:nord14_gui, "", s:nord14_term, "", "", "")
 
-" davidhalter/jedi-vim
-call s:hi("jediFunction", s:nord4_gui, s:nord3_gui, "", s:nord3_term, "", "")
-call s:hi("jediFat", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, s:underline.s:bold, "")
-
-" NERDTree
-" > scrooloose/nerdtree
-call s:hi("NERDTreeExecFile", s:nord7_gui, "", s:nord7_term, "", "", "")
-hi! link NERDTreeDirSlash Keyword
-hi! link NERDTreeHelp Comment
-
-" CtrlP
-" > ctrlpvim/ctrlp.vim
-hi! link CtrlPMatch Keyword
-hi! link CtrlPBufferHid Normal
-
 " vim-plug
 " > junegunn/vim-plug
 call s:hi("plugDeleted", s:nord11_gui, "", "", s:nord11_term, "", "")
-
-" vim-signature
-" > kshenoy/vim-signature
-call s:hi("SignatureMarkText", s:nord8_gui, "", s:nord8_term, "", "", "")
 
 "+--- Languages ---+
 " Haskell
@@ -621,11 +552,13 @@ hi! link haskellPragma haskellPreProc
 call s:hi("jsGlobalNodeObjects", s:nord8_gui, "", s:nord8_term, "", s:italic, "")
 hi! link jsBrackets Delimiter
 hi! link jsFuncCall Function
+hi! link jsFunction Function
 hi! link jsFuncParens Delimiter
 hi! link jsThis Keyword
 hi! link jsNoise Delimiter
 hi! link jsPrototype Keyword
 hi! link jsRegexpString SpecialChar
+hi! link StorageClass Function
 
 " Markdown
 " > plasticboy/vim-markdown
