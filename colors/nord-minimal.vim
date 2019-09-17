@@ -18,7 +18,6 @@ let g:colors_name = "nord-minimal"
 let s:nord_vim_version="0.12.0"
 set background=dark
 
-" let s:nord0_gui = "#2E3440"
 let s:nord0_gui = "#252A33"
 let s:nord1_gui = "#3B4252"
 let s:nord2_gui = "#434C5E"
@@ -239,26 +238,26 @@ endif
 "+----------------------+
 call s:hi("Boolean", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Character", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("Comment", s:nord3_gui_bright, "", s:nord3_term, "", s:italic, "")
-call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Comment", s:nord3_gui_bright, "", s:nord3_term, "", s:italicize_comments, "")
+call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Constant", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("Define", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Delimiter", s:nord6_gui, "", s:nord6_term, "", "", "")
-call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Float", s:nord15_gui, "", s:nord15_term, "", "", "")
-call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", s:bold, "")
+call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", "", "")
 call s:hi("Identifier", s:nord4_gui, "", "NONE", "", "NONE", "")
-call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
-call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
-call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", "", "")
+call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Number", s:nord15_gui, "", s:nord15_term, "", "", "")
-call s:hi("Operator", s:nord4_gui, "", s:nord9_term, "", "NONE", "")
-call s:hi("PreProc", s:nord4_gui, "", s:nord9_term, "", "NONE", "")
-call s:hi("Repeat", s:nord9_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("Operator", s:nord9_gui, "", s:nord9_term, "", "NONE", "")
+call s:hi("PreProc", s:nord9_gui, "", s:nord9_term, "", "NONE", "")
+call s:hi("Repeat", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Special", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("SpecialChar", s:nord13_gui, "", s:nord13_term, "", "", "")
-call s:hi("SpecialComment", s:nord8_gui, "", s:nord8_term, "", s:italic, "")
-call s:hi("Statement", s:nord4_gui, "", s:nord9_term, "", s:bold, "")
+call s:hi("SpecialComment", s:nord8_gui, "", s:nord8_term, "", s:italicize_comments, "")
+call s:hi("Statement", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("StorageClass", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("String", s:nord14_gui, "", s:nord14_term, "", "", "")
 call s:hi("Structure", s:nord9_gui, "", s:nord9_term, "", "", "")
