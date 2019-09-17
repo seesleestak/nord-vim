@@ -14,7 +14,7 @@ if version > 580
   endif
 endif
 
-let g:colors_name = "nord-minimal"
+let g:colors_name = "nord"
 let s:nord_vim_version="0.12.0"
 set background=dark
 
@@ -238,7 +238,7 @@ endif
 "+----------------------+
 call s:hi("Boolean", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Character", s:nord14_gui, "", s:nord14_term, "", "", "")
-call s:hi("Comment", s:nord3_gui_bright, "", s:nord3_term, "", s:italic, "")
+call s:hi("Comment", s:nord3_gui, "", s:nord3_term, "", s:italic, "")
 call s:hi("Conditional", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Constant", s:nord4_gui, "", "NONE", "", "", "")
 call s:hi("Define", s:nord9_gui, "", s:nord9_term, "", "", "")
