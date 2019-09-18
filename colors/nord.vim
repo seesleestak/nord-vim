@@ -468,9 +468,9 @@ hi! link sassFor Keyword
 hi! link sassFunctionDecl Keyword
 hi! link sassFunctionName Function
 hi! link sassidChar sassId
-hi! link sassInclude SpecialChar
+hi! link sassInclude Include
 hi! link sassMixinName Function
-hi! link sassMixing SpecialChar
+hi! link sassMixing Include
 hi! link sassReturn Keyword
 
 hi! link shCmdParenRegion Delimiter
