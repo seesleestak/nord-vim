@@ -1,4 +1,4 @@
-**NOTE**: This fork's modifications include darker background color, paired down plugin support, reduced coloring, and simplified italic/bold setting.
+**NOTE**: This fork's modifications include darker background color, paired down plugin support, and simplified italic/bold setting.
 
 --- 
 
