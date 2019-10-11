@@ -88,10 +88,6 @@ function! s:logWarning(msg)
   echohl None
 endfunction
 
-if !exists("g:nord_cursor_line_number_background")
-  let g:nord_cursor_line_number_background = 0
-endif
-
 if !exists("g:nord_bold_vertical_split_line")
   let g:nord_bold_vertical_split_line = 0
 endif
@@ -179,11 +175,7 @@ endif
 
 "+--- Gutter ---+
 call s:hi("CursorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
-if g:nord_cursor_line_number_background == 0
-  call s:hi("CursorLineNr", s:nord4_gui, s:nord0_gui, "NONE", "", "", "")
-else
-  call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "", "")
-endif
+call s:hi("CursorLineNr", s:nord4_gui, s:nord0_gui, "NONE", "", "NONE", "")
 call s:hi("Folded", s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, "")
 call s:hi("FoldColumn", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
 call s:hi("SignColumn", s:nord1_gui, s:nord0_gui, s:nord1_term, "NONE", "", "")
